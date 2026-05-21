@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="ka">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>მარიამი აფხაძე — გილოცავ! 🌻</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Noto+Sans+Georgian:wght@300;400;700&display=swap');
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{background:#FFFBF0;font-family:'Noto Sans Georgian',sans-serif;overflow-x:hidden;}
+  #hero{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;position:relative;overflow:hidden;background:#FFFBF0;}
+  .sun{position:absolute;top:-60px;right:-60px;width:220px;height:220px;background:radial-gradient(circle,#FFD700 40%,#FFA500 70%,transparent 100%);border-radius:50%;animation:sunPulse 4s ease-in-out infinite;opacity:0.5;}
+  .petals-bg{position:absolute;top:0;left:0;width:100%;height:100%;pointer-events:none;}
+  .petal{position:absolute;font-size:1.4rem;animation:fall linear infinite;opacity:0.7;}
+  @keyframes fall{0%{transform:translateY(-40px) rotate(0deg);opacity:0.8;}100%{transform:translateY(110vh) rotate(360deg);opacity:0;}}
+  @keyframes sunPulse{0%,100%{transform:scale(1);opacity:0.5;}50%{transform:scale(1.08);opacity:0.65;}}
+  @keyframes fadeUp{from{opacity:0;transform:translateY(24px);}to{opacity:1;transform:translateY(0);}}
+  @keyframes bounce{0%,100%{transform:translateY(0);}50%{transform:translateY(6px);}}
+  @keyframes spinSun{from{transform:rotate(0deg);}to{transform:rotate(360deg);}}
+  @keyframes countPop{0%{transform:scale(1.4);}100%{transform:scale(1);}}
+  .hero-tag{font-size:0.75rem;letter-spacing:0.3em;color:#B8860B;text-transform:uppercase;margin-bottom:1rem;animation:fadeUp 1s ease both;}
+  .hero-name{font-family:'Playfair Display',serif;font-size:clamp(3rem,10vw,6rem);color:#1a1a1a;line-height:1;text-align:center;animation:fadeUp 1s 0.2s ease both;}
+  .hero-name span{color:#E8A000;font-style:italic;}
+  .nickname{font-size:1rem;color:#888;margin-top:0.4rem;letter-spacing:0.15em;animation:fadeUp 1s 0.4s ease both;}
+  .hero-sub{margin-top:1.5rem;font-size:1.05rem;color:#555;text-align:center;max-width:420px;line-height:1.7;animation:fadeUp 1s 0.6s ease both;}
+  .scroll-hint{position:absolute;bottom:2rem;font-size:0.75rem;letter-spacing:0.2em;color:#aaa;animation:bounce 2s ease-in-out infinite;}
+  section{padding:5rem 1.5rem;max-width:680px;margin:0 auto;}
+  .section-label{font-size:0.7rem;letter-spacing:0.35em;text-transform:uppercase;color:#B8860B;margin-bottom:0.8rem;}
+  h2{font-family:'Playfair Display',serif;font-size:clamp(1.8rem,5vw,2.6rem);color:#1a1a1a;margin-bottom:1.5rem;line-height:1.2;}
+  .timeline{position:relative;padding-left:2rem;}
+  .timeline::before{content:'';position:absolute;left:0.4rem;top:0;bottom:0;width:1px;background:linear-gradient(to bottom,#FFD700,#FFA500,transparent);}
+  .t-item{position:relative;margin-bottom:2.5rem;opacity:0;transform:translateX(-16px);transition:all 0.6s ease;}
+  .t-item.visible{opacity:1;transform:translateX(0);}
+  .t-dot{position:absolute;left:-1.65rem;top:0.3rem;width:0.7rem;height:0.7rem;background:#FFD700;border-radius:50%;border:2px solid #FFFBF0;box-shadow:0 0 0 2px #FFD700;}
+  .t-year{font-size:0.7rem;letter-spacing:0.2em;color:#B8860B;text-transform:uppercase;margin-bottom:0.3rem;}
+  .t-text{font-size:1rem;color:#333;line-height:1.7;}
+  .card-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:1rem;}
+  .card{background:#fff;border:1px solid #f0e8c8;border-radius:12px;padding:1.2rem 1rem;text-align:center;transition:transform 0.2s ease,box-shadow 0.2s ease;cursor:default;}
+  .card:hover{transform:translateY(-4px);box-shadow:0 8px 24px rgba(230,160,0,0.15);}
+  .card-icon{font-size:2rem;margin-bottom:0.5rem;display:block;}
+  .card-label{font-size:0.85rem;color:#555;line-height:1.4;}
+  #luka-section{background:#FFF8E1;border-radius:16px;padding:3rem 2rem;text-align:center;position:relative;overflow:hidden;max-width:680px;margin:0 auto 3rem;}
+  .luka-counter{font-family:'Playfair Display',serif;font-size:5rem;color:#E8A000;line-height:1;}
+  .luka-btn{background:#1a1a1a;color:#fff;border:none;padding:0.7rem 2rem;border-radius:999px;font-size:0.9rem;font-family:'Noto Sans Georgian',sans-serif;cursor:pointer;letter-spacing:0.05em;transition:background 0.2s;margin-top:1.2rem;}
+  .luka-btn:hover{background:#E8A000;}
+  .luka-label{font-size:0.8rem;color:#aaa;margin-top:0.8rem;}
+  .letter-toggle{width:100%;background:#fff;border:1px solid #f0e8c8;border-radius:12px;padding:1.1rem 1.5rem;display:flex;align-items:center;justify-content:space-between;cursor:pointer;font-family:'Noto Sans Georgian',sans-serif;font-size:1rem;color:#1a1a1a;transition:background 0.2s;}
+  .letter-toggle:hover{background:#FFFBF0;}
+  .letter-arrow{font-size:1.2rem;transition:transform 0.35s ease;display:inline-block;}
+  .letter-arrow.open{transform:rotate(180deg);}
+  .letter-body{max-height:0;overflow:hidden;transition:max-height 0.5s ease,opacity 0.4s ease;opacity:0;}
+  .letter-body.open{max-height:800px;opacity:1;}
+  .letter-box{background:#fff;border:1px solid #f0e8c8;border-top:none;border-radius:0 0 12px 12px;padding:2rem 2.5rem 2rem;position:relative;line-height:1.9;font-size:1rem;color:#333;}
+  .letter-box::before{content:'\201C';font-family:'Playfair Display',serif;font-size:8rem;color:#FFE47A;position:absolute;top:-1.5rem;left:1rem;line-height:1;pointer-events:none;}
+  .letter-sig{margin-top:1.5rem;font-style:italic;color:#888;font-size:0.9rem;text-align:right;}
+  #final{text-align:center;padding:5rem 1.5rem 6rem;}
+  .big-wish{font-family:'Playfair Display',serif;font-size:clamp(2rem,7vw,4rem);color:#1a1a1a;line-height:1.2;margin-bottom:1rem;}
+  .big-wish span{color:#E8A000;font-style:italic;}
+  .sun-emoji{font-size:4rem;display:block;margin:1.5rem auto 0;animation:spinSun 8s linear infinite;}
+  .divider{text-align:center;color:#f0e0a0;letter-spacing:0.5em;font-size:0.9rem;padding:1rem 0;}
+  canvas#confetti-canvas{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:999;}
+</style>
+</head>
+<body>
+
+<canvas id="confetti-canvas"></canvas>
+
+<div id="hero">
+  <div class="sun"></div>
+  <div class="petals-bg" id="petals"></div>
+  <p class="hero-tag">Happy Birthday</p>
+  <h1 class="hero-name">მარიამი<br><span>აფხაძე</span></h1>
+  <p class="nickname">a.k.a. მისაკი ✦</p>
+  <p class="hero-sub">პირველი კლასიდან — სამუდამოდ.<br>ჩემო მზესავით მეგობარო. 🌻</p>
+  <p class="scroll-hint">↓ &nbsp; ჩამოსქროლე</p>
+</div>
+
+<section>
+  <p class="section-label">ჩვენი ამბავი</p>
+  <h2>მეგობრობის<br><em style="font-style:italic;color:#E8A000">ქრონიკები</em></h2>
+  <div class="timeline">
+    <div class="t-item">
+      <div class="t-dot"></div>
+      <p class="t-year">დასაწყისი</p>
+      <p class="t-text">პირველი კლასიდან ერთად დაგვაჯინეს და ალბათ ბედი იყო ეს ყველაფერი, მარა არ დაგვცალდა, მალევე გადაგვაჯინეს... ბევრს ლაპარაკობდითო, არადა კრიტიკულ ანალიზს ვუტარებდით ხალხს... haters gonna hate &lt;3</p>
+    </div>
+    <div class="t-item">
+      <div class="t-dot"></div>
+      <p class="t-year">სასკოლო ეპოქა</p>
+      <p class="t-text">დასაწყისში ვჩხუბობდით, რა თქმა უნდა, ჩემს გამო :( ვიბუტებოდი მარა შენ ყოველთვის მიძლებდი! მადლობა!</p>
+    </div>
+    <div class="t-item">
+      <div class="t-dot"></div>
+      <p class="t-year">სტუდენტობა</p>
+      <p class="t-text">დავშორდით დისტანციურად, მაგრამ მარიამი სულ მუდამ ჩემს გვერდითაა მაინც. ბოდიში რომ ისედაც ყელში ამოსულ ეკონომიკას გახსნევინებდი ხოლმე :)</p>
+    </div>
+    <div class="t-item">
+      <div class="t-dot"></div>
+      <p class="t-year">დღეს</p>
+      <p class="t-text">ჯერ სტუდენტობის ფაზაში ვართ და ისევ დისტანცირებულები, მარა მალე შეიცვლება ეს ყველაფერი! 🌻</p>
+    </div>
+  </div>
+</section>
+
+<div class="divider">✦ &nbsp; ✦ &nbsp; ✦</div>
+
+<section>
+  <p class="section-label">მისაკის სამყარო</p>
+  <h2>ის, რაც მარიამთან ასოცირდება, <span style="color:#E8A000">ყოველთვის</span></h2>
+  <div class="card-grid">
+    <div class="card">
+      <span class="card-icon">🌸</span>
+      <p class="card-label">იაპონია — სულით, ფიქრით, გემოვნებით</p>
+    </div>
+    <div class="card">
+      <span class="card-icon">⛸️</span>
+      <p class="card-label">ფიგურული სრიალი — იმედია რომელიმე სამყაროში ჩემპიონი ხარ და მე ამაყად გგულშემატკივრობ</p>
+    </div>
+    <div class="card">
+      <span class="card-icon">📚</span>
+      <p class="card-label">კითხვა — მთელი ბავშვობა მაოცებდი ამდენი რომ გქონდა წაკითხული</p>
+    </div>
+    <div class="card">
+      <span class="card-icon">🗼🇫🇷</span>
+      <p class="card-label">ფრანგული ესთეტიკა — შენდა უნებლიეთ, ყოველთვის</p>
+    </div>
+    <div class="card">
+      <span class="card-icon">🎌</span>
+      <p class="card-label">ანიმეები — კენმასთან გაგშიფავ სულ</p>
+    </div>
+    <div class="card">
+      <span class="card-icon">💛</span>
+      <p class="card-label">ყვითელი — მზის ფერი, შენი ფერი</p>
+    </div>
+    <div class="card">
+      <span class="card-icon">🧠</span>
+      <p class="card-label">ეკონომიკა — და ამის ახსნა სხვებისთვისაც 😄</p>
+    </div>
+    <div class="card">
+      <span class="card-icon">✂️</span>
+      <p class="card-label">მოკლე თმები — ხელმოწერა, სახასიათო, iconic</p>
+    </div>
+  </div>
+</section>
+
+<div class="divider">✦ &nbsp; ✦ &nbsp; ✦</div>
+
+<div id="luka-section">
+  <p class="section-label" style="text-align:center;">სპეციალური გვერდი</p>
+  <h2 style="text-align:center;margin-bottom:0.5rem;">ლუკა-ო-მეტრი 📊</h2>
+  <p style="color:#777;font-size:0.9rem;margin-bottom:2rem;text-align:center;">ოფიციალური სტატისტიკა</p>
+  <p style="color:#555;margin-bottom:0.5rem;font-size:0.9rem;">ლუკებთან გადაკვეთის რაოდენობა:</p>
+  <div class="luka-counter" id="luka-num">0</div>
+  <br>
+  <button class="luka-btn" onclick="addLuka()">+ კიდევ ერთი ლუკა 😭</button>
+  <p class="luka-label" id="luka-msg">დააჭირე და ჩაამატე...</p>
+</div>
+
+<section>
+  <p class="section-label">პირდაპირ გულიდან</p>
+  <h2>წერილი <span style="color:#E8A000">მისაკისთვის</span></h2>
+  <button class="letter-toggle" onclick="toggleLetter()" id="letter-btn">
+    <span>💌 &nbsp; გახსენი წერილი</span>
+    <span class="letter-arrow" id="arrow">▼</span>
+  </button>
+  <div class="letter-body" id="letter-body">
+    <div class="letter-box">
+      <p>მარიამი,</p>
+      <br>
+      <p>ჩემს სკოლის პირველ მეგობარს ვულოცავ დაბადების დღეს! მინდა სულ ბედნიერი, ჯანმრთელი და წარმატებული იყო. იგივეს გისურვებ რასაც საკუთარ თავს ვუსურვებდი!!!</p>
+      <br>
+      <p>ცხოვრების ყველა ეტაპზე ჩემს გვერდით ხარ და ძალიან დიდი მადლიერი ვარ, იმედია ჩემი გვერდით ყოფნაც გიმსუბუქებს რამეს.</p>
+      <br>
+      <p>მიყვარხარ, მიყვარხარ ახლაც და სულ!</p>
+      <p class="letter-sig">— შენი მერხის მეგობარი ლიკა &lt;33</p>
+    </div>
+  </div>
+</section>
+
+<div id="final">
+  <p class="big-wish">გილოცავ<br><span>დაბადების დღეს,</span><br>მისაკი ☀️</p>
+  <button class="luka-btn" style="margin-top:2rem;font-size:1rem;padding:0.9rem 2.5rem;" onclick="launchConfetti()">🎉 more confetti</button>
+  <span class="sun-emoji">☀️</span>
+</div>
+
+<script>
+  const petalsEl = document.getElementById('petals');
+  const emojis = ['🌸','🌼','🌻','✨','🍂'];
+  for(let i=0;i<18;i++){
+    const p = document.createElement('div');
+    p.className = 'petal';
+    p.textContent = emojis[Math.floor(Math.random()*emojis.length)];
+    p.style.left = Math.random()*100+'%';
+    p.style.animationDuration = (6+Math.random()*8)+'s';
+    p.style.animationDelay = (Math.random()*10)+'s';
+    p.style.fontSize = (0.9+Math.random()*0.8)+'rem';
+    petalsEl.appendChild(p);
+  }
+
+  const items = document.querySelectorAll('.t-item');
+  const obs = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{ if(e.isIntersecting) e.target.classList.add('visible'); });
+  },{threshold:0.2});
+  items.forEach(i=>obs.observe(i));
+
+  function toggleLetter(){
+    const body = document.getElementById('letter-body');
+    const arrow = document.getElementById('arrow');
+    const btn = document.getElementById('letter-btn').querySelector('span');
+    const isOpen = body.classList.toggle('open');
+    arrow.classList.toggle('open', isOpen);
+    btn.textContent = isOpen ? '💌  დახურე წერილი' : '💌  გახსენი წერილი';
+  }
+
+  let lukaCount = 0;
+  const msgs = ['ოჰ არა... 😬','კიდევ?! 😳','სახელი ხელყოფილია 💀','ლუკა? ლუკა?! 😭😭','საიდან იყრიან ყველა ამ ლუკები?!','სტატისტიკა ისტორიული ხდება 📊','ალბათ ეს სახელი გარყვნილია 🤔','ლუკა-ო-მეტრი გადაიტვირთება... 🚨'];
+  function addLuka(){
+    lukaCount++;
+    const el = document.getElementById('luka-num');
+    el.style.animation='none';
+    el.offsetHeight;
+    el.style.animation='countPop 0.4s ease';
+    el.textContent=lukaCount;
+    document.getElementById('luka-msg').textContent=msgs[Math.min(lukaCount-1,msgs.length-1)];
+    if(lukaCount>=5) launchConfetti();
+  }
+
+  const canvas=document.getElementById('confetti-canvas');
+  const ctx=canvas.getContext('2d');
+  let particles=[];
+  function launchConfetti(){
+    canvas.width=window.innerWidth;
+    canvas.height=window.innerHeight;
+    for(let i=0;i<160;i++){
+      particles.push({x:Math.random()*canvas.width,y:Math.random()*canvas.height-canvas.height,r:4+Math.random()*6,d:2+Math.random()*3,color:['#FFD700','#FFA500','#FF69B4','#87CEEB','#90EE90'][Math.floor(Math.random()*5)],tilt:Math.random()*10-5,tiltAngle:0,tiltSpeed:0.05+Math.random()*0.1});
+    }
+    animateConfetti();
+  }
+  function animateConfetti(){
+    ctx.clearRect(0,0,canvas.width,canvas.height);
+    particles.forEach(p=>{p.tiltAngle+=p.tiltSpeed;p.y+=p.d;p.tilt=Math.sin(p.tiltAngle)*12;ctx.beginPath();ctx.lineWidth=p.r;ctx.strokeStyle=p.color;ctx.moveTo(p.x+p.tilt+p.r/3,p.y);ctx.lineTo(p.x+p.tilt,p.y+p.tilt+p.r/5);ctx.stroke();});
+    particles=particles.filter(p=>p.y<canvas.height+20);
+    if(particles.length>0) requestAnimationFrame(animateConfetti);
+    else ctx.clearRect(0,0,canvas.width,canvas.height);
+  }
+</script>
+</body>
+</html>
